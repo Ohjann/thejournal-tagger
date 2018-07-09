@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Form from "./Components/Form";
 import registerServiceWorker from "./registerServiceWorker";
 
 const comments = document.querySelectorAll(".comment");
@@ -13,6 +13,6 @@ const comments = document.querySelectorAll(".comment");
   const refNode = comment.querySelector(".author");
   console.log(`Inserting ${id} as child of`, refNode);
   refNode.appendChild(mount);
-  ReactDOM.render(<App />, document.getElementById(id));
+  ReactDOM.render(<Form />, document.getElementById(id));
 });
 registerServiceWorker();

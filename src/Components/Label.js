@@ -11,12 +11,15 @@ const style = {
 
 class Label extends Component {
   render() {
+    const { handleClick } = this.props;
     return (
-      <img
-        style={[style]}
-        src={browser.extension.getURL("label.svg")}
-        alt="label"
-      />
+      <a href onClick={handleClick}>
+        <img
+          style={[style]}
+          src={browser.extension.getURL("label.svg")}
+          alt="label"
+        />
+      </a>
     );
   }
 }

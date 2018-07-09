@@ -11,12 +11,29 @@ const style = {
 };
 
 class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showInput: false
+    };
+  }
+
+  handleClick() {
+    console.log("click");
+    this.setState(prev => ({ showInput: !prev.showInput }));
+  }
+
   render() {
+    const { showInput } = this.state;
     return (
       <form style={[style]}>
-        <Label />
-        <Input />
-        <Submit />
+        {!showInput && <Label handleClick={this.handleClick} />}
+        {showInput && (
+          <div>
+            <Input />
+            <Submit />
+          </div>
+        )}
       </form>
     );
   }
