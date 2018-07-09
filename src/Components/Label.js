@@ -1,6 +1,6 @@
+/* global browser */
 import Radium from "radium";
 import React, { Component } from "react";
-import label from "../label.svg";
 
 const style = {
   width: "25px",
@@ -11,7 +11,13 @@ const style = {
 
 class Label extends Component {
   render() {
-    return <img style={[style]} src={label} alt="label" />;
+    return (
+      <img
+        style={[style]}
+        src={browser.extension.getURL("label.svg")}
+        alt="label"
+      />
+    );
   }
 }
 
