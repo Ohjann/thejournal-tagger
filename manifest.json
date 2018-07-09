@@ -8,7 +8,7 @@
     "content_scripts": [
         {
             "matches": ["*://*.thejournal.ie/*","*://*.thedailyedge.ie/*","*://*.the42.ie/*"],
-            "js": ["build/static/js/main.9d3ba6ba.js"]
+            "js": ["build/static/js/main.b4c3a1c8.js"]
         }
     ],
 

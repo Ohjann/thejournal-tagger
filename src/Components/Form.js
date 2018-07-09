@@ -5,9 +5,14 @@ import Label from "./Label";
 import Submit from "./Submit";
 
 const style = {
-  float: "left",
-  "margin-left": "1em",
-  "font-size": "0.8em"
+  form: {
+    float: "left",
+    "margin-left": "1em",
+    "font-size": "0.8em"
+  },
+  div: {
+    "white-space": "nowrap"
+  }
 };
 
 class Form extends Component {
@@ -16,20 +21,23 @@ class Form extends Component {
     this.state = {
       showInput: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    console.log("click");
-    this.setState(prev => ({ showInput: !prev.showInput }));
+    const { showInput } = this.state;
+    this.setState({
+      showInput: !showInput
+    });
   }
 
   render() {
     const { showInput } = this.state;
     return (
-      <form style={[style]}>
-        {!showInput && <Label handleClick={this.handleClick} />}
+      <form style={[style.form]}>
+        <Label handleClick={this.handleClick} />
         {showInput && (
-          <div>
+          <div style={[style.div]}>
             <Input />
             <Submit />
           </div>
