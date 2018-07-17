@@ -8,11 +8,11 @@
     "content_scripts": [
         {
             "matches": ["*://*.thejournal.ie/*","*://*.thedailyedge.ie/*","*://*.the42.ie/*"],
-            "js": ["js/main.js"]
+            "js": ["js/content.js"]
         }
     ],
 
     "background": {
-        "scripts": ["background-script.js"]
+        "scripts": ["js/background.js"]
     }
 }

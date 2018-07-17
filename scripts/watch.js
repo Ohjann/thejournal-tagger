@@ -3,10 +3,10 @@ process.env.NODE_ENV = "production";
 const fs = require("fs-extra");
 const webpack = require("webpack");
 const paths = require("../config/paths");
-const config = require("../config/webpack.config.prod.js");
+const config = require("../config/webpack.config.js");
 
 // removes react-dev-utils/webpackHotDevClient.js at first in the array
-config.entry.shift();
+config.entry.content.shift();
 
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, paths.appBuild, {

@@ -7,12 +7,12 @@ import style from "./style";
 class Form extends Component {
   constructor(props) {
     super(props);
-    const { commentId } = this.props;
+    const { label, commentId } = this.props;
     this.state = {
       showInput: false,
       value: "",
       commentId,
-      label: ""
+      label
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
