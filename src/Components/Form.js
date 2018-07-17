@@ -1,8 +1,6 @@
 import Radium from "radium";
 import React, { Component } from "react";
-import Input from "./Input";
 import Label from "./Label";
-import Submit from "./Submit";
 
 const style = {
   form: {
@@ -12,6 +10,23 @@ const style = {
   },
   div: {
     "white-space": "nowrap"
+  },
+  input: {
+    height: "25px",
+    padding: "0 5px",
+    "vertical-align": "top",
+    "box-shadow": "none",
+    "border-right": "none"
+  },
+  submit: {
+    height: "27px",
+    width: "48px",
+    background: "rgb(70, 209, 96)",
+    border: "none",
+    color: "white",
+    "text-transform": "uppercase",
+    "font-weight": "bold",
+    "word-break": "break-all"
   }
 };
 
@@ -38,8 +53,8 @@ class Form extends Component {
         <Label handleClick={this.handleClick} />
         {showInput && (
           <div style={[style.div]}>
-            <Input />
-            <Submit />
+            <input style={[style.input]} type="text" />
+            <input type="submit" style={[style.submit]} value="Save" />
           </div>
         )}
       </form>
