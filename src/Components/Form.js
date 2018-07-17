@@ -1,3 +1,4 @@
+/* global browser */
 import Radium from "radium";
 import React, { Component } from "react";
 import Label from "./Label";
@@ -28,7 +29,24 @@ class Form extends Component {
 
   handleSubmit(event) {
     const { value } = this.state;
-    console.log(value);
+
+    browser.runtime
+      .sendMessage({
+        request: "storeLabel",
+        data: {
+          // id: e.target.children[1].name,
+          value
+        }
+      })
+      .then(
+        () => {
+          console.log("THEN");
+        },
+        message => {
+          console.log(`Error: ${message.response}`);
+        }
+      );
+
     event.preventDefault();
   }
 
