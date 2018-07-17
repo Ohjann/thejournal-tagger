@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import Form from "./Components/Form";
 import registerServiceWorker from "./registerServiceWorker";
 
