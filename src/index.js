@@ -10,7 +10,6 @@ const comments = document.querySelectorAll(".comment");
   const mount = document.createElement("div");
   mount.id = id;
   const refNode = comment.querySelector(".author");
-  console.log(`Inserting ${id} as child of`, refNode);
   refNode.appendChild(mount);
   ReactDOM.render(<Form />, document.getElementById(id));
 });
