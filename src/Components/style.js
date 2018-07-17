@@ -23,5 +23,16 @@ export default {
     "text-transform": "uppercase",
     "font-weight": "bold",
     "word-break": "break-all"
+  },
+  span: {
+    padding: "0 5px",
+    border: "1px solid #c7c7c7",
+    "border-radius": "3px",
+    "font-size": ".9em",
+    "font-weight": "normal",
+    display: "inline-block",
+    "vertical-align": "bottom",
+    "margin-top": "1px",
+    "margin-left": "7px"
   }
 };

@@ -7,9 +7,12 @@ import style from "./style";
 class Form extends Component {
   constructor(props) {
     super(props);
+    const { commentId } = this.props;
     this.state = {
       showInput: false,
-      value: ""
+      value: "",
+      commentId,
+      label: ""
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -28,19 +31,22 @@ class Form extends Component {
   }
 
   handleSubmit(event) {
-    const { value } = this.state;
+    const { value, commentId, showInput } = this.state;
 
     browser.runtime
       .sendMessage({
         request: "storeLabel",
         data: {
-          // id: e.target.children[1].name,
+          id: commentId,
           value
         }
       })
       .then(
         () => {
-          console.log("THEN");
+          this.setState({
+            label: value,
+            showInput: !showInput
+          });
         },
         message => {
           console.log(`Error: ${message.response}`);
@@ -51,7 +57,7 @@ class Form extends Component {
   }
 
   render() {
-    const { showInput } = this.state;
+    const { showInput, label } = this.state;
     return (
       <form style={[style.form]} onSubmit={e => this.handleSubmit(e)}>
         <Label handleClick={this.handleClick} />
@@ -65,6 +71,7 @@ class Form extends Component {
             <input type="submit" style={[style.submit]} value="Save" />
           </div>
         )}
+        <span style={[style.span]}>{label}</span>
       </form>
     );
   }

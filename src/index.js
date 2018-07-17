@@ -11,6 +11,6 @@ const comments = document.querySelectorAll(".comment");
   mount.id = id;
   const refNode = comment.querySelector(".author");
   refNode.appendChild(mount);
-  ReactDOM.render(<Form />, document.getElementById(id));
+  ReactDOM.render(<Form commentId={id} />, document.getElementById(id));
 });
 registerServiceWorker();
