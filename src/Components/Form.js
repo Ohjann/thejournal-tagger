@@ -1,42 +1,22 @@
 import Radium from "radium";
 import React, { Component } from "react";
 import Label from "./Label";
-
-const style = {
-  form: {
-    float: "left",
-    "margin-left": "1em",
-    "font-size": "0.8em"
-  },
-  div: {
-    "white-space": "nowrap"
-  },
-  input: {
-    height: "25px",
-    padding: "0 5px",
-    "vertical-align": "top",
-    "box-shadow": "none",
-    "border-right": "none"
-  },
-  submit: {
-    height: "27px",
-    width: "48px",
-    background: "rgb(70, 209, 96)",
-    border: "none",
-    color: "white",
-    "text-transform": "uppercase",
-    "font-weight": "bold",
-    "word-break": "break-all"
-  }
-};
+import style from "./style";
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showInput: false
+      showInput: false,
+      value: ""
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
 
   handleClick() {
@@ -46,14 +26,24 @@ class Form extends Component {
     });
   }
 
+  handleSubmit(event) {
+    const { value } = this.state;
+    console.log(value);
+    event.preventDefault();
+  }
+
   render() {
     const { showInput } = this.state;
     return (
-      <form style={[style.form]}>
+      <form style={[style.form]} onSubmit={e => this.handleSubmit(e)}>
         <Label handleClick={this.handleClick} />
         {showInput && (
           <div style={[style.div]}>
-            <input style={[style.input]} type="text" />
+            <input
+              style={[style.input]}
+              type="text"
+              onChange={this.handleChange}
+            />
             <input type="submit" style={[style.submit]} value="Save" />
           </div>
         )}
