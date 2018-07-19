@@ -1,8 +1,8 @@
-/* global browser */
 import Radium from "radium";
 import React, { Component } from "react";
 import Label from "./Label";
 import style from "./style";
+import { storeLabel } from "../browser";
 
 class Form extends Component {
   constructor(props) {
@@ -32,27 +32,7 @@ class Form extends Component {
 
   handleSubmit(event) {
     const { value, commentId, showInput } = this.state;
-
-    browser.runtime
-      .sendMessage({
-        request: "storeLabel",
-        data: {
-          id: commentId,
-          value
-        }
-      })
-      .then(
-        () => {
-          this.setState({
-            label: value,
-            showInput: !showInput
-          });
-        },
-        message => {
-          console.log(`Error: ${message.response}`);
-        }
-      );
-
+    this.setState(storeLabel(value, commentId, showInput));
     event.preventDefault();
   }
 
