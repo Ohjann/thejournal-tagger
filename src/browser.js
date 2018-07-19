@@ -2,31 +2,27 @@
 
 // Store label and return new state
 function storeLabel(value, commentId, showInput) {
-  browser.runtime
-    .sendMessage({
-      request: "storeLabel",
-      data: {
-        id: commentId,
-        value
-      }
-    })
-    .then(
-      message => {
-        console.log(message);
-        return {
+  return new Promise((resolve, reject) => {
+    browser.runtime
+      .sendMessage({
+        request: "storeLabel",
+        data: {
+          id: commentId,
+          value
+        }
+      })
+      .then(() => {
+        resolve({
           label: value,
           showInput: !showInput
-        };
-      },
-      message => {
-        console.log(`Error: ${message.response}`);
-      }
-    );
+        });
+      }, reject);
+  });
 }
 
 function requestLabels() {
   return new Promise((resolve, reject) => {
-    // Wait to ensure background script is loaded first (can't find alternative in docs)
+    // Hacky wait to ensure background script is loaded first (can't find alternative in docs)
     setTimeout(() => {
       browser.runtime
         .sendMessage({

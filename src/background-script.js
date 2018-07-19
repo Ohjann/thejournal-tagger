@@ -2,16 +2,16 @@
 // TODO: move me out of public
 function handleMessage(request, sender, sendResponse) {
   if (request.request === "requestLabels") {
-    browser.storage.sync
+    browser.storage.local
       .get()
       .then(items => sendResponse(items), error => sendResponse(error));
   } else if (request.request === "removeLabel") {
-    browser.storage.sync.remove(request.id);
+    browser.storage.local.remove(request.id);
   } else {
     const data = {};
     data[request.data.id] = request.data.value;
     console.log(data);
-    browser.storage.sync.set(data).then(
+    browser.storage.local.set(data).then(
       sendResponse({
         response: `Saved ${request.data.id}, ${request.data.value}`
       }),

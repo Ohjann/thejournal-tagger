@@ -16,7 +16,7 @@ window.onload = () => {
         const refNode = comment.querySelector(".author");
         refNode.appendChild(mount);
         ReactDOM.render(
-          <Form commentId={id} label={labels.id} />,
+          <Form commentId={id} label={labels[id]} />,
           document.getElementById(id)
         );
       });

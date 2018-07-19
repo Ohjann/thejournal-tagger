@@ -32,7 +32,9 @@ class Form extends Component {
 
   handleSubmit(event) {
     const { value, commentId, showInput } = this.state;
-    this.setState(storeLabel(value, commentId, showInput));
+    storeLabel(value, commentId, showInput).then(newState =>
+      this.setState(newState)
+    );
     event.preventDefault();
   }
 
