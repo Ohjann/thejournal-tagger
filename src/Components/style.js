@@ -24,7 +24,7 @@ export default {
     "font-weight": "bold",
     "word-break": "break-all"
   },
-  span: {
+  p: {
     padding: "0 5px",
     border: "1px solid #c7c7c7",
     "border-radius": "3px",
@@ -34,5 +34,19 @@ export default {
     "vertical-align": "bottom",
     "margin-top": "1px",
     "margin-left": "7px"
+  },
+  deleteSpan: {
+    color: "rgb(156, 156, 156)",
+    width: "1.2em",
+    height: "100%",
+    display: "inline-block",
+    "text-align": "center",
+    "margin-right": "-5px",
+    "margin-left": "5px",
+    "border-top-right-radius": "3px",
+    "border-bottom-right-radius": "3px",
+    "box-sizing": "border-box",
+    "border-left": "1px solid rgb(199, 199, 199)",
+    "cursor": "pointer"
   }
 };

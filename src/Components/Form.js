@@ -53,7 +53,12 @@ class Form extends Component {
             <input type="submit" style={[style.submit]} value="Save" />
           </div>
         )}
-        <span style={[style.span]}>{label}</span>
+        {!showInput && (
+          <p style={[style.p]}>
+            {label}
+            <span style={[style.deleteSpan]}>x</span>
+          </p>
+        )}
       </form>
     );
   }
