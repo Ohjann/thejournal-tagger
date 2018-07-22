@@ -47,6 +47,9 @@ export default {
     "border-bottom-right-radius": "3px",
     "box-sizing": "border-box",
     "border-left": "1px solid rgb(199, 199, 199)",
-    "cursor": "pointer"
+    cursor: "pointer",
+    background: "unset",
+    "text-indent": "unset",
+    padding: "unset"
   }
 };

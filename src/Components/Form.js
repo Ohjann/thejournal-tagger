@@ -2,7 +2,7 @@ import Radium from "radium";
 import React, { Component } from "react";
 import Label from "./Label";
 import style from "./style";
-import { storeLabel } from "../browser";
+import { removeLabel, storeLabel } from "../browser";
 
 class Form extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class Form extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
@@ -38,6 +39,16 @@ class Form extends Component {
     event.preventDefault();
   }
 
+  handleDelete(event) {
+    const { commentId } = this.state;
+    removeLabel(commentId).then(
+      this.setState({
+        label: undefined
+      })
+    );
+    event.preventDefault();
+  }
+
   render() {
     const { showInput, label } = this.state;
     return (
@@ -53,12 +64,19 @@ class Form extends Component {
             <input type="submit" style={[style.submit]} value="Save" />
           </div>
         )}
-        {!showInput && (
-          <p style={[style.p]}>
-            {label}
-            <span style={[style.deleteSpan]}>x</span>
-          </p>
-        )}
+        {!showInput &&
+          label !== undefined && (
+            <p style={[style.p]}>
+              {label}
+              <button
+                type="button"
+                style={[style.deleteSpan]}
+                onClick={this.handleDelete}
+              >
+                x
+              </button>
+            </p>
+          )}
       </form>
     );
   }

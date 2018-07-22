@@ -20,17 +20,27 @@ function storeLabel(value, commentId, showInput) {
   });
 }
 
-function requestLabels() {
+function removeLabel(commentId) {
   return new Promise((resolve, reject) => {
-    // Hacky wait to ensure background script is loaded first (can't find alternative in docs)
-    setTimeout(() => {
-      browser.runtime
-        .sendMessage({
-          request: "requestLabels"
-        })
-        .then(resolve, reject);
-    }, 1000);
+    browser.runtime
+      .sendMessage({
+        request: "removeLabel",
+        data: {
+          id: commentId
+        }
+      })
+      .then(resolve, reject);
   });
 }
 
-export { storeLabel, requestLabels };
+function requestLabels() {
+  return new Promise((resolve, reject) => {
+    browser.runtime
+      .sendMessage({
+        request: "requestLabels"
+      })
+      .then(resolve, reject);
+  });
+}
+
+export { storeLabel, removeLabel, requestLabels };
