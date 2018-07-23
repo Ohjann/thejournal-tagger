@@ -16,24 +16,24 @@ class Form extends Component {
       commentId,
       label
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.toggleInput = this.toggleInput.bind(this);
+    this.saveLabel = this.saveLabel.bind(this);
+    this.deleteLabel = this.deleteLabel.bind(this);
+    this.setValueState = this.setValueState.bind(this);
   }
 
-  handleChange(event) {
+  setValueState(event) {
     this.setState({ value: event.target.value });
   }
 
-  handleClick() {
+  toggleInput() {
     const { showInput } = this.state;
     this.setState({
       showInput: !showInput
     });
   }
 
-  handleSubmit(event) {
+  saveLabel(event) {
     const { value, commentId, showInput } = this.state;
     storeLabel(value, commentId, showInput).then(newState =>
       this.setState(newState)
@@ -41,7 +41,7 @@ class Form extends Component {
     event.preventDefault();
   }
 
-  handleDelete(event) {
+  deleteLabel(event) {
     const { commentId } = this.state;
     removeLabel(commentId).then(
       this.setState({
@@ -54,12 +54,12 @@ class Form extends Component {
   render() {
     const { showInput, label } = this.state;
     return (
-      <form style={[style.form]} onSubmit={e => this.handleSubmit(e)}>
-        <Tag handleClick={this.handleClick} />
-        {showInput && <Input handleChange={this.handleChange} />}
+      <form style={[style.form]} onSubmit={e => this.saveLabel(e)}>
+        <Tag handleClick={this.toggleInput} />
+        {showInput && <Input handleChange={this.setValueState} />}
         {!showInput &&
           label !== undefined && (
-            <Label label={label} handleDelete={this.handleDelete} />
+            <Label label={label} handleDelete={this.deleteLabel} />
           )}
       </form>
     );
