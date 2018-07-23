@@ -1,5 +1,7 @@
 import Radium from "radium";
 import React, { Component } from "react";
+import Tag from "./Tag";
+import Input from "./Input";
 import Label from "./Label";
 import style from "./style";
 import { removeLabel, storeLabel } from "../browser";
@@ -15,9 +17,9 @@ class Form extends Component {
       label
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -53,29 +55,11 @@ class Form extends Component {
     const { showInput, label } = this.state;
     return (
       <form style={[style.form]} onSubmit={e => this.handleSubmit(e)}>
-        <Label handleClick={this.handleClick} />
-        {showInput && (
-          <div style={[style.div]}>
-            <input
-              style={[style.input]}
-              type="text"
-              onChange={this.handleChange}
-            />
-            <input type="submit" style={[style.submit]} value="Save" />
-          </div>
-        )}
+        <Tag handleClick={this.handleClick} />
+        {showInput && <Input handleChange={this.handleChange} />}
         {!showInput &&
           label !== undefined && (
-            <p style={[style.p]}>
-              {label}
-              <button
-                type="button"
-                style={[style.deleteSpan]}
-                onClick={this.handleDelete}
-              >
-                x
-              </button>
-            </p>
+            <Label label={label} handleDelete={this.handleDelete} />
           )}
       </form>
     );

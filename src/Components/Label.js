@@ -1,25 +1,21 @@
-/* global browser */
 import Radium from "radium";
 import React, { Component } from "react";
-
-const style = {
-  width: "25px",
-  "border-radius": "unset",
-  "margin-left": "-7px",
-  cursor: "pointer"
-};
+import style from "./style";
 
 class Label extends Component {
   render() {
-    const { handleClick } = this.props;
+    const { label, handleDelete } = this.props;
     return (
-      <a href onClick={handleClick}>
-        <img
-          style={[style]}
-          src={browser.extension.getURL("label.svg")}
-          alt="label"
-        />
-      </a>
+      <p style={[style.p]}>
+        {label}
+        <button
+          type="button"
+          style={[style.deleteSpan]}
+          onClick={e => handleDelete(e)}
+        >
+          x
+        </button>
+      </p>
     );
   }
 }
