@@ -8,15 +8,18 @@ window.onload = () => {
   const comments = document.querySelectorAll(".comment");
   requestLabels().then(
     labels => {
-      console.log(labels);
       [...comments].forEach(comment => {
+        // create new node as mount beside comment author
         const id = `comment-tag-${comment.id}`;
         const mount = document.createElement("div");
         mount.id = id;
         const refNode = comment.querySelector(".author");
         refNode.appendChild(mount);
+
+        // render label
+        const labelVal = labels === undefined ? undefined : labels[id];
         ReactDOM.render(
-          <Form commentId={id} label={labels[id]} />,
+          <Form commentId={id} label={labelVal} />,
           document.getElementById(id)
         );
       });
