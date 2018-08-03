@@ -13,8 +13,7 @@ window.onload = () => {
         const id = `comment-tag-${comment.id}`;
         const mount = document.createElement("div");
         mount.id = id;
-        const refNode = comment.querySelector(".author");
-        refNode.appendChild(mount);
+        comment.querySelector(".author").appendChild(mount);
 
         // render label
         const labelVal = labels === undefined ? undefined : labels[id];

@@ -1,8 +1,8 @@
 import Radium from "radium";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import style from "./style";
 
-class Label extends Component {
+class Label extends PureComponent {
   render() {
     const { label, handleDelete } = this.props;
     return (

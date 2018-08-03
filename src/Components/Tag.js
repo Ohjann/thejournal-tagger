@@ -1,6 +1,6 @@
 /* global browser */
 import Radium from "radium";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 const style = {
   width: "25px",
@@ -9,7 +9,7 @@ const style = {
   cursor: "pointer"
 };
 
-class Label extends Component {
+class Label extends PureComponent {
   render() {
     const { handleClick } = this.props;
     return (

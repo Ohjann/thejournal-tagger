@@ -1,12 +1,12 @@
 import Radium from "radium";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Tag from "./Tag";
 import Input from "./Input";
 import Label from "./Label";
 import style from "./style";
 import { removeLabel, storeLabel } from "../browser";
 
-class Form extends Component {
+class Form extends PureComponent {
   constructor(props) {
     super(props);
     const { label, commentId } = this.props;

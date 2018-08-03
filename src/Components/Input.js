@@ -1,8 +1,8 @@
 import Radium from "radium";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import style from "./style";
 
-class Input extends Component {
+class Input extends PureComponent {
   render() {
     const { handleChange } = this.props;
     return (
