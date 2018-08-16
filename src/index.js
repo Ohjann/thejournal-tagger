@@ -8,9 +8,12 @@ window.onload = () => {
   const comments = document.querySelectorAll(".comment");
   requestLabels().then(
     labels => {
+      console.log(comments);
       [...comments].forEach(comment => {
+        const commenterIdentifier = comment.querySelector(".author-left .name")
+          .href;
         // create new node as mount beside comment author
-        const id = `comment-tag-${comment.id}`;
+        const id = `comment-tag-${commenterIdentifier}`;
         const mount = document.createElement("div");
         mount.id = id;
         comment.querySelector(".author").appendChild(mount);
